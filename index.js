@@ -42,7 +42,10 @@ function sarifFormatter(stylelintResults) {
       };
 
       sarifRepresentation.ruleId = warning.rule;
-      sarifLog.runs[0].tool.driver.rules.push(warning.rule);
+      sarifLog.runs[0].tool.driver.rules.push({
+          id: warning.rule,
+          helpUri: `https://github.com/stylelint/stylelint/blob/master/lib/rules/${warning.rule}/README.md`,
+      });
       sarifRepresentation.ruleIndex = nextRuleIndex++;
 
       sarifRepresentation.locations[0].physicalLocation.region = {};

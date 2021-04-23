@@ -51,9 +51,18 @@ const expectedSarifLog = {
           "name": "stylelint",
           "informationUri": "https://github.com/stylelint/stylelint",
           "rules": [
-            "block-no-empty",
-            "foo",
-            "bar"
+            {
+              "id": "block-no-empty",
+              "helpUri": "https://github.com/stylelint/stylelint/blob/master/lib/rules/block-no-empty/README.md"
+            },
+            {
+              "id": "foo",
+              "helpUri": "https://github.com/stylelint/stylelint/blob/master/lib/rules/foo/README.md"
+            },
+            {
+              "id": "bar",
+              "helpUri": "https://github.com/stylelint/stylelint/blob/master/lib/rules/bar/README.md"
+            }
           ]
         }
       },
