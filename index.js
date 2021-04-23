@@ -19,9 +19,7 @@ function sarifFormatter(stylelintResults) {
 
   let nextRuleIndex = 0;
   const sarifResults = [];
-  debugger;
   for (const stylelintResult of stylelintResults) {
-    debugger;
     if (!stylelintResult.warnings.length) {
       break;
     }
@@ -54,13 +52,13 @@ function sarifFormatter(stylelintResults) {
         warning.column;
 
       sarifResults.push(sarifRepresentation);
-      debugger;
     });
   }
 
   sarifLog.runs[0].results = sarifResults;
-  debugger;
-  return sarifLog;
+  let stringifiedLog = JSON.stringify(sarifLog, null, 2);
+
+  return stringifiedLog;
 }
 
 module.exports = sarifFormatter;
