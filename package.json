@@ -1,0 +1,27 @@
+{
+  "name": "stylelint-sarif-formatter",
+  "version": "1.0.0",
+  "description": "A stylelint formatter for SARIF",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "url": "https://github.com/zhanwang626/stylelint-sarif-formatter.git",
+    "type": "git"
+  },
+  "keywords": [
+    "stylelint",
+    "sarif",
+    "formatter",
+    "reporter",
+    "report"
+  ],
+  "author": "Zhan Wang <wwzzvin626@gmail.com>",
+  "license": "MIT",
+  "private": false,
+  "devDependencies": {
+    "jest": "^26.6.3",
+    "prettier": "^2.2.1"
+  }
+}
