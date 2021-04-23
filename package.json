@@ -1,6 +1,6 @@
 {
   "name": "stylelint-sarif-formatter",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A stylelint formatter for SARIF",
   "main": "lib/index.js",
   "scripts": {
