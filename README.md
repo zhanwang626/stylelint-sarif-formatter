@@ -7,7 +7,9 @@ A stylelint formatter for SARIF
 
 ```shell
 yarn add stylelint-sarif-formatter
-yarn stylelint "**/*.css" --custom-formatter=node_modules/stylelint-sarif_formatter
+yarn stylelint "**/*.css" --custom-formatter=node_modules/stylelint-sarif-formatter
+# or
+yarn stylelint "**/*.css" --custom-formatter=node_modules/stylelint-sarif-formatter -o output.sarif
 ```
 
 ## Contributing
