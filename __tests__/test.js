@@ -40,6 +40,19 @@ const mockStyleLintResults = [
     errored: false,
     warnings: [],
   },
+  {
+    source: 'path/to/fileD.css',
+    errored: false,
+    warnings: [
+      {
+        line: 3,
+        column: 8,
+        rule: 'block-no-empty',
+        severity: 'warning',
+        text: 'No empty block!',
+      },
+    ],
+  },
 ];
 
 const expectedSarifLog = {
@@ -133,6 +146,27 @@ const expectedSarifLog = {
           ],
           ruleId: 'bar',
           ruleIndex: 2,
+        },
+        {
+          level: "warning",
+          message: {
+            text: "No empty block!"
+          },
+          locations: [
+            {
+              physicalLocation: {
+                artifactLocation: {
+                  uri: "path/to/fileD.css"
+                },
+                region: {
+                  startLine: 3,
+                  startColumn: 8
+                }
+              }
+            }
+          ],
+          ruleId: "block-no-empty",
+          ruleIndex: 0
         },
       ],
     },

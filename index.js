@@ -19,9 +19,12 @@ function sarifFormatter(stylelintResults) {
 
   let nextRuleIndex = 0;
   const sarifResults = [];
+  const sarifRules = {};
+  const sarifRuleIndices = {};
+
   for (const stylelintResult of stylelintResults) {
     if (!stylelintResult.warnings.length) {
-      break;
+      continue;
     }
 
     stylelintResult.warnings.forEach(function (warning) {
@@ -42,11 +45,19 @@ function sarifFormatter(stylelintResults) {
       };
 
       sarifRepresentation.ruleId = warning.rule;
-      sarifLog.runs[0].tool.driver.rules.push({
+
+      if (typeof sarifRules[warning.rule] === 'undefined') {
+        sarifRuleIndices[warning.rule] = nextRuleIndex++;
+
+        sarifRules[warning.rule] = {
           id: warning.rule,
           helpUri: `https://github.com/stylelint/stylelint/blob/master/lib/rules/${warning.rule}/README.md`,
-      });
-      sarifRepresentation.ruleIndex = nextRuleIndex++;
+        }
+      }
+
+      if (sarifRuleIndices[warning.rule] !== 'undefined') {
+        sarifRepresentation.ruleIndex = sarifRuleIndices[warning.rule];
+      }
 
       sarifRepresentation.locations[0].physicalLocation.region = {};
       sarifRepresentation.locations[0].physicalLocation.region.startLine =
@@ -59,6 +70,14 @@ function sarifFormatter(stylelintResults) {
   }
 
   sarifLog.runs[0].results = sarifResults;
+
+  if (Object.keys(sarifRules).length > 0) {
+    for (const ruleId of Object.keys(sarifRules)) {
+      let rule = sarifRules[ruleId];
+      sarifLog.runs[0].tool.driver.rules.push(rule);
+    }
+  }
+
   let stringifiedLog = JSON.stringify(sarifLog, null, 2);
 
   return stringifiedLog;
