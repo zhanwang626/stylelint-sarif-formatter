@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "release": "release-it"
   },
   "repository": {
     "url": "https://github.com/zhanwang626/stylelint-sarif-formatter.git",
